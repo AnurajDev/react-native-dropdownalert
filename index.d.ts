@@ -54,4 +54,5 @@ export interface DropdownAlertProps {
 export type DropdownAlertType = "info" | "warn" | "error" | "custom" | "success";
 export default class DropdownAlert extends React.Component<DropdownAlertProps> {
   alertWithType(type: DropdownAlertType, title: string, message: string, interval?: number): void;
+  closeDirectly(): void;
 }
