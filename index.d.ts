@@ -1,5 +1,15 @@
 import * as React from "react";
 
+export type actionType = "automatic" | "programmatic" | "tap" | "pan" | "cancel";
+export type DropdownAlertType = "info" | "warn" | "error" | "custom" | "success";
+
+export interface OnCloseReturnType {
+  type: DropdownAlertType;
+  title: string;
+  message: string;
+  action: actionType;
+}
+
 export interface DropdownAlertProps {
   imageSrc?: string | number;
   infoImageSrc?: string | number;
@@ -23,7 +33,7 @@ export interface DropdownAlertProps {
   cancelBtnImageStyle?: object | number;
   titleNumOfLines?: number;
   messageNumOfLines?: number;
-  onClose?(): void;
+  onClose?(data: OnCloseReturnType): void;
   onCancel?(): void;
   showCancel?: boolean;
   tapToCloseEnabled?: boolean;
@@ -51,7 +61,7 @@ export interface DropdownAlertProps {
   titleTextProps?: object;
   messageTextProps?: object;
 }
-export type DropdownAlertType = "info" | "warn" | "error" | "custom" | "success";
+
 export default class DropdownAlert extends React.Component<DropdownAlertProps> {
   alertWithType(type: DropdownAlertType, title: string, message: string, interval?: number): void;
   closeDirectly(): void;
